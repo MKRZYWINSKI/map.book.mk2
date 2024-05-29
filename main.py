@@ -5,5 +5,8 @@ users: list[dict] = [
     {"name":"Leon", "surname":"Hajdus", "posts": 229 }]
 
 
-for user in users:
-    print(f"Twój znamjony{user['name']} opublikował: {user['posts']} postów")
+def read_users(user_list: list[dict]) -> None:
+    for user in user_list:
+        print(f"Twój znajomy {user['name']}: {user['surname']}, opublikował{user['posts']} postów")
+
+        read_users(users)
