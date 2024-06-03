@@ -1,8 +1,46 @@
 
 from tkinter import *
 
-def prosta_funkcja():
-    print("Prosta funkcja.")
+user_list=[]
+
+
+
+
+class User:
+    def __init__(self,imie,nazwisko,posty,miejscowosc):
+        self.imie=imie
+        self.nazwisko=nazwisko
+        self.posty=posty
+        self.miejscowosc=miejscowosc
+
+def create_user ()->None:
+      imie=entry_imie.get()
+      nazwisko=entry_nazwisko.get()
+      posty=entry_posty.get()
+      miejscowosc=entry_miejscowosc
+      uzytkownik=User(imie, nazwisko, posty, miejscowosc)
+
+
+
+      user_list.append(uzytkownik)
+
+      show_user()
+
+def show_user()->None:
+  Listbox_lista_uzytkownikow.delete(0,END)
+  for idx,user in enumerate (user_list):
+     print(user.imie,user.nazwisko,user.posty,user.miejscowosc)
+     Listbox_lista_uzytkownikow.insert(idx,f'{user.imie} {user.nazwisko},{user.posty},{user.miejscowosc}')
+
+
+
+
+
+
+
+
+
+
 
 root = Tk()
 root.geometry("800x700")
@@ -46,7 +84,7 @@ entry_imie=Entry(ramka_formularz)
 entry_nazwisko=Entry(ramka_formularz)
 entry_posty=Entry(ramka_formularz)
 entry_miejscowosc=Entry(ramka_formularz)
-button_dodaj_uzytkownika=Button(ramka_formularz,text="Dodaj")
+button_dodaj_uzytkownika=Button(ramka_formularz,text="Dodaj",command=create_user)
 
 
 
@@ -58,9 +96,9 @@ Label_posty.grid(column=0, row=3,sticky=W)
 Label_miejscowosc.grid(column=0, row=4,sticky=W)
 
 entry_imie.grid(column=1, row=1)
-entry_nazwisko.grid(column=1, row=1)
-entry_posty.grid(column=1, row=2)
-entry_miejscowosc.grid(column=1, row=3)
+entry_nazwisko.grid(column=1, row=2)
+entry_posty.grid(column=1, row=3)
+entry_miejscowosc.grid(column=1, row=4)
 button_dodaj_uzytkownika.grid(column=0, row=5,columnspan=2)
 
 #ramka_pokaz_szczegoly
